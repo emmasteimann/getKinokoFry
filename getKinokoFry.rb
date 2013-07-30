@@ -39,7 +39,7 @@ class GetKinokoFry
         if @previous_url == next_url
           comic_url = page.search("//img[contains(@src,'webcomic')]").first.attributes["src"].to_s
           image_name = comic_url.split('/')[-1]
-          @agent.get("#{comic_url}").save("#{chapter_directory(current_chapter)}/#{image_name}")
+          @agent.get("#{comic_url}").save("#{chapter_directory(current_chapter)}/#{page_cursor}_#{image_name}")
           puts "Currently Downloading: #{current_chapter}"
           puts "Downloading comic address: #{comic_url}"
           zip_previous_chapter(current_chapter)
